@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/models/repositories/pokemon_repository.dart';
 import 'package:flutter_application_1/features/home/container/home_container.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       //home: HomePage(list: [],),
       //home: HomeLoading(),
-      home: HomeContainer(repository: PokemonRepository()),
+      home: HomeContainer(repository: PokemonRepository(dio: Dio())),
     );
   }
 }
