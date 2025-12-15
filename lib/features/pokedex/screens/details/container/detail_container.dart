@@ -2,29 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/error/failure.dart';
 import 'package:flutter_application_1/common/models/pokemon.dart';
 import 'package:flutter_application_1/common/models/repositories/pokemon_repository.dart';
-import 'package:flutter_application_1/features/home/pages/home_error.dart';
-import 'package:flutter_application_1/features/home/pages/home_loading.dart';
-import 'package:flutter_application_1/features/home/pages/home_page.dart';
+import 'package:flutter_application_1/common/widgets/po_error.dart';
+import 'package:flutter_application_1/common/widgets/po_loading.dart';
+import 'package:flutter_application_1/features/pokedex/screens/details/pages/detail_page.dart';
 
-class HomeContainer extends StatelessWidget {
-  const HomeContainer({super.key, required this.repository});
+class DetailArguments {
+  DetailArguments({required this.name});
+  final String name;
+}
+
+class DetailContainer extends StatelessWidget {
+  const DetailContainer({
+    super.key,
+    required this.repository,
+    required this.arguments,
+  });
   final IPokemonRepository repository;
+  final DetailArguments arguments;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
       future: repository.getAllPokemons(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return HomeLoading();
+          return PoLoading();
         }
 
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return HomePage(list: snapshot.data!);
+          return DetailPage(name: arguments.name, list: snapshot.data!);
         }
 
         if (snapshot.hasError) {
-          return HomeError(error: (snapshot.error as Failure).message!);
+          return PoError(error: (snapshot.error as Failure).message!);
         }
         return Container();
       },
