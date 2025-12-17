@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/models/pokemon.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key, required this.name, required this.list});
-  final String name;
+  
+  const DetailPage({super.key, required this.pokemon, required this.list});
+  
+  final Pokemon pokemon;
   final List<Pokemon> list;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(name)),
+      appBar: AppBar(title: Text(pokemon.name)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

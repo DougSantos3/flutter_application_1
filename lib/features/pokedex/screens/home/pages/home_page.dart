@@ -10,13 +10,36 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            'Pokedex',
+            style: TextStyle(color: Colors.black, fontSize: 26),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.menu, color: Colors.black),
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 24,
-          mainAxisSpacing: 24,
-          children: list.map((e) => PokemonItemWidget(pokemon: e)).toList(),
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          children: list
+              .map((e) => PokemonItemWidget(pokemon: e, onTap: onItemTap))
+              .toList(),
         ),
       ),
     );
