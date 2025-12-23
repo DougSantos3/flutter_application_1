@@ -9,7 +9,8 @@ class DetailPage extends StatelessWidget {
     required this.pokemon,
     required this.list,
     required this.onBack,
-    required this.controller, required this.onChangePokemon,
+    required this.controller,
+    required this.onChangePokemon,
   });
 
   final Pokemon pokemon;
@@ -27,6 +28,7 @@ class DetailPage extends StatelessWidget {
             pokemon: pokemon,
             list: list,
             controller: controller,
+            onChangePokemon: onChangePokemon,
           ),
           // Other widgets can be added here
         ],
