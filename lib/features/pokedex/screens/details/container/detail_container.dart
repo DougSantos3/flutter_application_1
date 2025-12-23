@@ -7,22 +7,42 @@ import 'package:flutter_application_1/common/widgets/po_loading.dart';
 import 'package:flutter_application_1/features/pokedex/screens/details/pages/detail_page.dart';
 
 class DetailArguments {
-  DetailArguments({required this.pokemon});
+  DetailArguments({this.index = 0, required this.pokemon});
   final Pokemon pokemon;
+  final int? index;
 }
 
-class DetailContainer extends StatelessWidget {
+class DetailContainer extends StatefulWidget {
   const DetailContainer({
     super.key,
     required this.repository,
     required this.arguments,
+    required this.onBack,
   });
   final IPokemonRepository repository;
   final DetailArguments arguments;
+  final VoidCallback onBack;
+
+  @override
+  State<DetailContainer> createState() => _DetailContainerState();
+}
+
+class _DetailContainerState extends State<DetailContainer> {
+  late PageController _controller;
+  Pokemon? _pokemon;
+  @override
+  void initState() {
+    _controller = PageController(
+      viewportFraction: 0.5,
+      initialPage: widget.arguments.index!,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
-      future: repository.getAllPokemons(),
+      future: widget.repository.getAllPokemons(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return PoLoading();
@@ -30,7 +50,20 @@ class DetailContainer extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return DetailPage(pokemon: arguments.pokemon, list: snapshot.data!);
+          if (_pokemon == null) {
+            _pokemon = widget.arguments.pokemon;
+          }
+          return DetailPage(
+            pokemon: _pokemon!,
+            list: snapshot.data!,
+            onBack: widget.onBack,
+            controller: _controller,
+            onChangePokemon: (Pokemon value) {
+              setState(() {
+                _pokemon = value;
+              });
+            },
+          );
         }
 
         if (snapshot.hasError) {
