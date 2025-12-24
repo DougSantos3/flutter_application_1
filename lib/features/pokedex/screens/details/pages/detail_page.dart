@@ -21,16 +21,35 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
+      body: CustomScrollView(
+        physics: ClampingScrollPhysics(),
+        slivers: [
           DetailAppBarWidget(pokemon: pokemon, onBack: onBack),
           DetailListWidget(
             pokemon: pokemon,
             list: list,
             controller: controller,
             onChangePokemon: onChangePokemon,
+          ), // Other widgets can be added here
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Stack(
+                children: [
+                  Container(color: pokemon.baseColor),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(24),
+                        topRight: Radius.circular(24),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          // Other widgets can be added here
         ],
       ),
     );
