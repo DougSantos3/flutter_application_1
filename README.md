@@ -2,7 +2,7 @@
 <br />
 
 <p align="center">
-  <img alt="Examples" src=".github/pokedex.gif" width="100%">
+  <img alt="Examples" src=".github/pokedex.gif" width="50%">
 </p>
 
 <br>
@@ -31,6 +31,5 @@ flutter pub get
 Execution project:
 
 ```bash
-# Download dependencies
 flutter run
 ```
