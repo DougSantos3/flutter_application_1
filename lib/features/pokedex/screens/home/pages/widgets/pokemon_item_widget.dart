@@ -24,7 +24,7 @@ class PokemonItemWidget extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: pokemon.baseColor!.withOpacity(0.8),
+              color: pokemon.baseColor!.withValues(alpha: 0.8),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Padding(
@@ -49,7 +49,7 @@ class PokemonItemWidget extends StatelessWidget {
                       Text(
                         '#${pokemon.num}',
                         style: TextStyle(
-                          color: Colors.black.withOpacity(0.4),
+                          color: Colors.black.withValues(alpha: 0.4),
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
