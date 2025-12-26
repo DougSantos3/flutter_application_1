@@ -2,11 +2,10 @@
 <br />
 
 <p align="center">
-  <img alt="Examples" src=".github/pokedex.mp4" width="100%">
+  <img alt="Examples" src=".github/pokedex.gif" width="100%">
 </p>
 
 <br>
-
 
 ## Getting Started
 
