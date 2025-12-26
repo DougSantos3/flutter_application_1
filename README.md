@@ -1,16 +1,37 @@
-# flutter_application_1
+<h1 align="center">Pokedex Pokemon</h1>
+<br />
 
-A new Flutter project.
+<p align="center">
+  <img alt="Examples" src=".github/pokedex.mp4" width="100%">
+</p>
+
+<br>
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+You need to download the:
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+# Java
+adoptopenjdk-21.0.6+7.0.LTS
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+# Flutter
+3.32.8-stable
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dependencies:
+
+```bash
+# Download dependencies
+flutter pub get
+```
+
+Execution project:
+
+```bash
+# Download dependencies
+flutter run
+```
