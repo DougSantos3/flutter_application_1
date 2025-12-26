@@ -11,20 +11,21 @@
 
 You need to download the:
 
-```bash
-# Java
-adoptopenjdk-21.0.6+7.0.LTS
-```
+Version Java
 
 ```bash
-# Flutter
+Java 21
+```
+
+Version Flutter
+
+```bash
 3.32.8-stable
 ```
 
-Dependencies:
+Download Dependencies:
 
 ```bash
-# Download dependencies
 flutter pub get
 ```
 
